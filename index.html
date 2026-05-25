@@ -10,8 +10,8 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --white:#F0EEFF;
-  --silver:#C4C0E0;
-  --dim:#8888AA;
+  --silver:#D8D5F0;
+  --dim:#A8A8C8;
   --glass:rgba(120,60,200,0.07);
   --glass-b:rgba(120,60,200,0.12);
   --glass-h:rgba(120,60,200,0.16);
@@ -61,7 +61,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-logo{font-family:"Playfair Display",serif;font-weight:600;font-size:1.1rem;letter-spacing:.06em;color:var(--white);text-decoration:none}
 .nav-links{display:flex;gap:0;list-style:none;align-items:center}
 .nav-links li a{font-family:"Inter",sans-serif;font-size:.72rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--dim);text-decoration:none;transition:color .25s;padding:0 18px;height:68px;display:flex;align-items:center}
+  color:rgba(180,180,210,.9);text-decoration:none;transition:color .25s;padding:0 18px;height:68px;display:flex;align-items:center}
 .nav-links li a:hover{color:var(--white)}
 .nav-cta{
   margin-left:8px;
@@ -139,8 +139,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   border-color:rgba(61,199,199,.7);
   box-shadow:0 0 35px rgba(140,30,178,.4),0 0 60px rgba(61,199,199,.15),inset 0 1px 0 rgba(200,120,255,0.3)
 }
-.btn-g{background:transparent;border-color:rgba(255,255,255,.12);color:var(--dim)}
-.btn-g:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.2);color:var(--white)}
+.btn-g{background:transparent;border-color:rgba(255,255,255,.18);color:rgba(185,182,225,.9)}
+.btn-g:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.28);color:var(--white)}
 
 /* PROFILE */
 .hero-right{display:flex;justify-content:center;align-items:center}
@@ -217,7 +217,7 @@ section{padding:100px 0}
 .section-label{
   font-family:"Space Mono",monospace;
   font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;
-  color:var(--p1);opacity:.85;
+  color:var(--p1);opacity:1;
   margin-bottom:10px;display:flex;align-items:center;gap:16px
 }
 .section-label::after{content:"";width:40px;height:1px;background:linear-gradient(90deg,var(--p1),var(--p2),transparent);box-shadow:0 0 8px rgba(61,199,199,0.5)}
@@ -232,7 +232,7 @@ section{padding:100px 0}
 .about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:start}
 .about-text p{
   font-family:"Inter",sans-serif;font-size:.9rem;
-  line-height:2.1;color:rgba(225,225,240,.72);
+  line-height:2.1;color:rgba(235,235,248,.88);
   margin-bottom:18px;font-weight:300
 }
 .about-text p strong{color:var(--white);font-weight:500}
@@ -245,7 +245,7 @@ section{padding:100px 0}
 .stat-label{
   font-family:"Space Mono",monospace;
   font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--dim);margin-top:6px
+  color:rgba(180,178,220,.9);margin-top:6px
 }
 
 /* EXPERTISE */
@@ -262,7 +262,7 @@ section{padding:100px 0}
   font-size:.95rem;color:var(--white);margin-bottom:10px;
   letter-spacing:.01em
 }
-.exp-card p{font-size:.78rem;line-height:1.9;color:rgba(190,190,215,.58);font-weight:300}
+.exp-card p{font-size:.78rem;line-height:1.9;color:rgba(228,226,248,.95);font-weight:300}
 
 /* TIMELINE */
 .timeline{display:flex;flex-direction:column}
@@ -270,28 +270,20 @@ section{padding:100px 0}
 .tl-item:last-child{border-bottom:none}
 .tl-period{
   font-family:"Space Mono",monospace;font-size:.63rem;
-  letter-spacing:.18em;text-transform:uppercase;color:var(--p2);opacity:.9
+  letter-spacing:.18em;text-transform:uppercase;color:var(--p2);opacity:1
 }
 .tl-company{
   font-family:"Inter",sans-serif;font-weight:500;
   font-size:.88rem;color:var(--white);letter-spacing:.02em;margin-top:7px
 }
-.tl-loc{font-family:"Space Mono",monospace;font-size:.62rem;color:var(--dim);margin-top:3px;letter-spacing:.08em}
+.tl-loc{font-family:"Space Mono",monospace;font-size:.62rem;color:rgba(175,172,215,.85);margin-top:3px;letter-spacing:.08em}
 .tl-role{
   font-family:"Playfair Display",serif;font-weight:600;
   font-size:1.15rem;color:var(--white);margin-bottom:14px;letter-spacing:-.005em
 }
-.tl-desc{font-size:.8rem;line-height:2;color:rgba(190,190,215,.6);font-weight:300}
+.tl-desc{font-size:.8rem;line-height:2;color:rgba(210,210,232,.78);font-weight:300}
 .tl-desc a{color:rgba(160,100,220,.85);text-decoration:none;border-bottom:1px solid rgba(140,30,178,.3);transition:color .2s}
 .tl-desc a:hover{color:rgba(180,120,240,1);border-bottom-color:rgba(140,30,178,.7)}
-.tl-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.tag{
-  font-family:"Space Mono",monospace;
-  font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;
-  padding:5px 12px;
-  border:1px solid rgba(255,255,255,0.09);
-  border-radius:10px;color:var(--dim)
-}
 
 /* SPECIALIZATIONS */
 .spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
@@ -307,15 +299,15 @@ section{padding:100px 0}
 }
 .spec-item:hover{border-color:rgba(61,199,199,.55);background:linear-gradient(135deg,rgba(61,199,199,0.1) 0%,rgba(8,2,18,0.65) 100%);box-shadow:0 0 22px rgba(61,199,199,0.18)}
 .spec-dot{width:5px;height:5px;border-radius:50%;background:var(--p1);flex-shrink:0;opacity:.8}
-.spec-text{font-family:"Space Mono",monospace;font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.spec-text{font-family:"Space Mono",monospace;font-size:.87rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(225,222,248,.97)}
 
 /* CONTACT PAGE */
 .contact-page{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:68px;padding-bottom:80px}
 .contact-intro{max-width:620px;margin-bottom:60px}
-.contact-intro p{font-size:.88rem;line-height:2.05;color:rgba(200,200,220,.6);margin-top:14px;font-weight:300}
+.contact-intro p{font-size:.88rem;line-height:2.05;color:rgba(220,220,240,.82);margin-top:14px;font-weight:300}
 .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:40px}
 .contact-card h3{font-family:"Inter",sans-serif;font-weight:500;font-size:1.05rem;color:var(--white);margin-bottom:10px}
-.contact-card p{font-size:.8rem;line-height:1.9;color:rgba(190,190,215,.58);margin-bottom:26px;font-weight:300}
+.contact-card p{font-size:.8rem;line-height:1.9;color:rgba(210,210,232,.78);margin-bottom:26px;font-weight:300}
 .contact-link{
   display:inline-flex;align-items:center;gap:10px;
   font-family:"Space Mono",monospace;
@@ -337,7 +329,7 @@ section{padding:100px 0}
   background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px
 }
 .cdl{font-family:"Space Mono",monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--p2);opacity:.8;width:78px;flex-shrink:0}
-.cdrv{font-family:"Inter",sans-serif;font-size:.82rem;color:var(--silver)}
+.cdrv{font-family:"Inter",sans-serif;font-size:.82rem;color:rgba(220,218,245,.92)}
 .cdrv a{color:var(--silver);text-decoration:none;border-bottom:1px solid rgba(140,30,178,.25);transition:color .2s}
 .cdrv a:hover{color:var(--white)}
 
@@ -346,8 +338,8 @@ section{padding:100px 0}
 
 /* FOOTER */
 footer{padding:36px 0;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(140,30,178,.2)}
-.footer-logo{font-family:"Playfair Display",serif;font-weight:600;font-size:.95rem;letter-spacing:.05em;color:rgba(200,200,212,.3)}
-.footer-right{font-family:"Space Mono",monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,200,212,.22)}
+.footer-logo{font-family:"Playfair Display",serif;font-weight:600;font-size:.95rem;letter-spacing:.05em;color:rgba(200,200,212,.55)}
+.footer-right{font-family:"Space Mono",monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,200,212,.48)}
 
 /* FADE */
 .fade-up{opacity:0;transform:translateY(26px);transition:opacity .85s ease,transform .85s ease}
@@ -426,22 +418,23 @@ footer{padding:36px 0;display:flex;justify-content:space-between;align-items:cen
   <section>
     <div class="fade-up">
       <p class="section-label">About</p>
+      <h2 class="section-title">Connecting talent<br>with opportunity</h2>
     </div>
     <div class="about-grid fade-up">
       <div class="about-text">
         <p>I specialize in the <strong>people behind the algorithms</strong>. In the fast-moving world of AI and technology, every breakthrough traces back to a singular talent, a researcher who sees differently, an engineer who builds what others only imagine, a leader who assembles teams that change industries.</p>
         <p>My work sits at the intersection of <strong>deep technical understanding and human insight</strong>. I have built relationships with some of APAC's most sophisticated technology organizations, from agile Tech start-ups and global quantitative trading firms to shaping the next future of their businesses.</p>
-        <p>With roots in <strong>Finance Technology recruitment</strong> and a specialization now firmly in the AI &amp; Data ecosystem, I bring a rare combination: the credibility to earn trust from world-class talents, and the market intelligence to match them with environments where they will do their best work.</p>
+        <p>With roots in <strong>Finance Technology recruitment</strong> and a specialization now firmly in the <strong>AI &amp; Data</strong> ecosystem, I bring a rare combination: the credibility to earn trust from world-class talents, and the market intelligence to match them with environments where they will do their best work.</p>
         <p>Based in <strong>Hong Kong</strong>, with active reach across <strong>Hong Kong, China, Singapore, Australia, Japan and the broader Asia-Pacific region</strong>. I partner with founders, AI and Tech leads, and talent teams serious about building exceptional teams.</p>
       </div>
       <div class="stats-col">
         <div class="gc" style="padding:26px 28px">
           <div class="stat-num">6<em>+</em></div>
-          <div class="stat-label">Years APAC Recruitment</div>
+          <div class="stat-label">Years Specialised in APAC Recruitment</div>
         </div>
         <div class="gc" style="padding:26px 28px">
-          <div class="stat-num">6<em>+</em></div>
-          <div class="stat-label">Markets Covered</div>
+          <div class="stat-num">5<em>+</em></div>
+          <div class="stat-label">Global Markets Covered</div>
         </div>
         <div class="gc" style="padding:26px 28px">
           <div class="stat-num" style="font-size:1.45rem;line-height:1.15">Artificial Intelligence<em style="font-size:1rem;font-style:normal;color:rgba(61,199,199,.9)"> / </em>Data</div>
@@ -460,7 +453,7 @@ footer{padding:36px 0;display:flex;justify-content:space-between;align-items:cen
 <div class="page" id="expertise">
   <section>
     <div class="fade-up">
-      <p class="section-label">What I do</p>
+      <p class="section-label">Specialities</p>
       <h2 class="section-title">Where I focus</h2>
     </div>
     <div class="exp-grid fade-up">
@@ -482,7 +475,7 @@ footer{padding:36px 0;display:flex;justify-content:space-between;align-items:cen
       <div class="gc exp-card">
         <div class="exp-icon">◫</div>
         <h3>APAC Market Intelligence</h3>
-        <p>HK · Singapore · Tokyo · Sydney · Seoul. Deep networks built over years of active recruitment across the region's most demanding and competitive technology markets.</p>
+        <p>Hong Kong · China · Singapore · Tokyo · Sydney. Deep networks built over years of active recruitment across the region's most demanding and competitive technology markets.</p>
       </div>
       <div class="gc exp-card">
         <div class="exp-icon">◌</div>
@@ -503,7 +496,10 @@ footer{padding:36px 0;display:flex;justify-content:space-between;align-items:cen
 <!-- ROLE TYPES -->
 <div class="page">
   <section style="padding:56px 0">
-    <div class="fade-up"><p class="section-label">Role types</p></div>
+    <div class="fade-up">
+      <p class="section-label">Experience</p>
+      <h2 class="section-title">Roles Covered</h2>
+    </div>
     <div class="spec-grid fade-up">
       <div class="spec-item"><div class="spec-dot"></div><span class="spec-text">AI / Tech Lead</span></div>
       <div class="spec-item"><div class="spec-dot"></div><span class="spec-text">AI / ML Engineer</span></div>
@@ -542,9 +538,6 @@ footer{padding:36px 0;display:flex;justify-content:space-between;align-items:cen
             As the number one talent partner to leading global companies and a strategic supplier to AGS, we are defined by our measurable results: half of the CVs we submit lead to interviews, 100% of core clients return, and our client and candidate NPS scores stand at 89 and 70 respectively.<br><br>
             Stay ahead of hiring trends, for insights on technology, talent, and market intelligence, <a href="https://www.linkedin.com/newsletters/7206239154358104066/" target="_blank" rel="noopener">subscribe to our newsletter</a>.
           </div>
-          <div class="tl-tags">
-            <span class="tag">AI / ML</span><span class="tag">Data</span><span class="tag">Nicoll Curtin</span><span class="tag">APAC</span><span class="tag">Consultancy</span>
-          </div>
         </div>
       </div>
 
@@ -556,10 +549,7 @@ footer{padding:36px 0;display:flex;justify-content:space-between;align-items:cen
         </div>
         <div>
           <div class="tl-role">Associate Partner, Asia</div>
-          <div class="tl-desc">First recruiter hired to establish a global Recruitment-to-Recruitment agency in Asia. Built client and candidate networks from the ground up, achieving over 15 new client signings. Completed placements for recruiter roles ranging from Researcher to Associate Director. Developed marketing strategies and content campaigns to build brand visibility across the region. Provided operational insights supporting leadership in strategic planning. Coverage spans Hong Kong, Singapore, Japan, Australia, and broader Asia-Pacific.</div>
-          <div class="tl-tags">
-            <span class="tag">Rec2Rec</span><span class="tag">APAC</span><span class="tag">Business Development</span><span class="tag">Agency Build</span>
-          </div>
+          <div class="tl-desc">Specialised in Recruitment-to-Recruitment across Asia-Pacific, connecting recruitment professionals with agency opportunities at all career levels. Supported both boutique search firms and larger recruitment groups in building and expanding their teams across the region. Coverage spanned Hong Kong, Singapore, Japan, Australia, and broader Asia-Pacific.</div>
         </div>
       </div>
 
@@ -571,25 +561,19 @@ footer{padding:36px 0;display:flex;justify-content:space-between;align-items:cen
         </div>
         <div>
           <div class="tl-role">Senior Consultant</div>
-          <div class="tl-desc">360 recruitment at a niche headhunting firm specialising in technology for banking, finance, and Fintech across APAC. Focused on finance technology and quantitative roles, serving hedge funds, prop trading firms, investment banks, and Fintech companies. Managed key accounts including Nomura, Instinet, BAML, and YipitData. Secured placements at tier-1 buy-side firms including Citadel, Millennium, Point72, Tower Research Capital, and Time Research.</div>
-          <div class="tl-tags">
-            <span class="tag">FinTech</span><span class="tag">Quant Finance</span><span class="tag">Hedge Funds</span><span class="tag">Prop Trading</span><span class="tag">Investment Banking</span>
-          </div>
+          <div class="tl-desc">360 recruitment at a specialist headhunting firm focused on technology within banking, finance, and Fintech across Asia-Pacific. Specialised in finance technology and quantitative disciplines, partnering with a range of clients spanning hedge funds, proprietary trading firms, investment banks, and Fintech companies. Covered roles across quantitative research and development, financial software engineering, and front-office technology.</div>
         </div>
       </div>
 
       <div class="tl-item">
         <div>
           <div class="tl-period">2019, 2021</div>
-          <div class="tl-company">Ambitious People Group</div>
+          <div class="tl-company">Ambitious People Group (later The Ambitious Group)</div>
           <div class="tl-loc">Hong Kong</div>
         </div>
         <div>
           <div class="tl-role">Principal Consultant</div>
-          <div class="tl-desc">360 recruitment specialist in technology sales talent. Ranked Top Biller in Hong Kong and #6 in revenue among 200+ consultants group-wide. Secured over 20 new client relationships and earned promotion within 8 months. Recruited across sales, BD, presales, solution architecture, and client success roles spanning software, cloud, cybersecurity, Fintech, and digital marketing, across HK, China, Japan, Singapore, and Southeast Asia.</div>
-          <div class="tl-tags">
-            <span class="tag">Tech Sales</span><span class="tag">Top Biller</span><span class="tag">APAC</span><span class="tag">SaaS</span><span class="tag">Cloud</span>
-          </div>
+          <div class="tl-desc">360 recruitment specialist focused on technology sales talent across Asia-Pacific. Partnered with technology companies across software, cloud, data, telecommunication, cybersecurity, Fintech, digital marketing, and 3D printing to place professionals in sales, business development, account manager, presales, solution architecture, and client success roles. Coverage spanned Hong Kong, China, Japan, Singapore, and Southeast Asia.</div>
         </div>
       </div>
 
@@ -611,12 +595,10 @@ footer{padding:36px 0;display:flex;justify-content:space-between;align-items:cen
       <div class="gc contact-card">
         <h3>For candidates</h3>
         <p>Exploring new opportunities in AI, Data, Finance Technology, or Quant? Whether you're a researcher, engineer, or leader, I'd like to understand where you're heading and whether I can help you get there faster.</p>
-        <a href="mailto:wyatt.yeung@nicollcurtin.com" class="contact-link">✉&nbsp; Send an email</a>
       </div>
       <div class="gc contact-card">
         <h3>For hiring teams</h3>
         <p>Building an AI or data team in APAC? I partner with founders, AI leads, and talent teams who are serious about attracting exceptional talent in competitive technical domains.</p>
-        <a href="https://www.linkedin.com/in/wyatt-yeung/" target="_blank" rel="noopener" class="contact-link">in&nbsp; Connect on LinkedIn</a>
       </div>
       <div class="gc contact-card">
         <h3>Contact</h3>
@@ -641,7 +623,7 @@ footer{padding:36px 0;display:flex;justify-content:space-between;align-items:cen
 <div class="page">
   <footer>
     <div class="footer-logo">Wyatt Yeung</div>
-    <div class="footer-right">Nicoll Curtin · Hong Kong · AI &amp; ML Recruitment</div>
+    <div class="footer-right"><a href="https://www.nicollcurtin.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(140,30,178,.3);transition:color .2s">Nicoll Curtin</a> · Hong Kong · AI &amp; Data / Finance Tech &amp; Quant Recruitment</div>
   </footer>
 </div>
 

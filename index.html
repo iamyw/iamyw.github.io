@@ -45,6 +45,8 @@ body{
   font-size:16px;
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
+  font-kerning:normal;
+  font-feature-settings:"kern" 1;
 }
 ::selection{background:var(--accent);color:var(--abyss)}
 a{color:inherit}
@@ -327,19 +329,22 @@ html.light .quote{
   box-shadow:0 24px 70px rgba(20,60,90,.14), 0 0 55px rgba(var(--qa),.10), inset 0 1px 0 rgba(255,255,255,.9);
 }
 html.light .quote .mark,html.light .quote footer span{filter:brightness(.62) saturate(1.25)}
-.qnav{display:flex;align-items:center;gap:16px;margin-top:26px}
-.qbtn{
-  width:46px;height:46px;border-radius:50%;cursor:pointer;
-  background:var(--glass);border:1px solid var(--glass-edge);
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  color:var(--muted);display:flex;align-items:center;justify-content:center;
-  transition:color .25s,border-color .25s,transform .3s var(--ease-out);
+.qdots{display:flex;align-items:center;flex-wrap:wrap;gap:2px;margin-top:24px}
+.qdot{
+  width:32px;height:32px;padding:0;background:none;border:0;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
 }
-.qbtn:hover{color:var(--accent);border-color:var(--glass-edge-hot);transform:translateY(-2px)}
-.qbtn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.qcount{font-family:var(--mono);font-size:12px;letter-spacing:.24em;color:var(--faint);margin-left:6px}
-.qbar{flex:1;max-width:180px;height:1px;background:var(--glass-edge);position:relative;overflow:hidden}
-.qbar i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:var(--accent)}
+.qdot i{
+  display:block;width:8px;height:8px;border-radius:100px;
+  background:rgba(255,255,255,.16);position:relative;overflow:hidden;
+  transition:width .35s var(--ease-out),background .35s;
+}
+.qdot:hover i{background:rgba(255,255,255,.38)}
+.qdot.on i{width:32px;background:rgba(255,255,255,.12)}
+.qdot i b{position:absolute;inset:0;border-radius:100px;transform-origin:left;transform:scaleX(0);background:rgb(var(--qd,255,138,60))}
+html.light .qdot i{background:rgba(11,34,51,.15)}
+html.light .qdot:hover i{background:rgba(11,34,51,.3)}
+html.light .qdot.on i{background:rgba(11,34,51,.10)}
 
 /* ============ CONTACT ============ */
 #contact{padding-bottom:80px}
@@ -487,7 +492,7 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
 
   <!-- ================= HERO ================= -->
   <section class="hero" aria-label="Introduction">
-    <p class="hud-meta coords boot d5">22.3193° N — 114.1694° E · Hong Kong</p>
+    <p class="hud-meta coords boot d5">22.3193° N, 114.1694° E · Hong Kong</p>
     <p class="hud-meta est boot d5">In search since 2019</p>
 
     <h1 aria-label="Wyatt Yeung">
@@ -504,7 +509,7 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
     <div class="hero-cta boot d5">
       <a class="btn btn-accent" href="#contact">Get in touch</a>
       <a class="btn btn-ghost" href="#experience">Explore my journey</a>
-      <a class="btn btn-ghost" href="https://linkedin.com/in/wyatt-yeung" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="#feedback">Candidate feedback</a>
     </div>
     <p class="scroll-cue boot d6">Scroll</p>
   </section>
@@ -567,28 +572,28 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
         </div>
 
         <article class="fly-card" data-i="0">
-          <p class="yr">2025 — 2026</p>
+          <p class="yr">2025&ndash;2026</p>
           <h3>Nicoll Curtin</h3>
           <p class="role">Principal Consultant</p>
           <p>Contingent recruitment for AI, quant and technology roles — helping companies across all industries in Hong Kong, Singapore, Beijing and Shanghai find the right people, fast. A client base built entirely from scratch.</p>
         </article>
 
         <article class="fly-card" data-i="1">
-          <p class="yr">2024 — 2025</p>
+          <p class="yr">2024&ndash;2025</p>
           <h3>Dean James Rec2Rec</h3>
           <p class="role">Associate Partner, Asia</p>
           <p>Recruitment-to-recruitment across Asia-Pacific — connecting recruitment professionals with agency opportunities at every level, and helping boutique search firms and larger groups build their teams across Hong Kong, Singapore, Japan and Australia.</p>
         </article>
 
         <article class="fly-card" data-i="2">
-          <p class="yr">2021 — 2024</p>
+          <p class="yr">2021&ndash;2024</p>
           <h3>BAH Partners</h3>
           <p class="role">Senior Consultant</p>
           <p>Specialist headhunting for hedge funds, high-frequency trading firms, crypto companies and investment banks &mdash; covering quantitative research and development, front-office software engineering, and financial technology mandates.</p>
         </article>
 
         <article class="fly-card" data-i="3">
-          <p class="yr">2019 — 2021</p>
+          <p class="yr">2019&ndash;2021</p>
           <h3>Ambitious People Group</h3>
           <p class="role">Principal Consultant</p>
           <p>360° search for technology sales talent across Asia-Pacific — placing sales, business development, presales and account management professionals with software, cloud, data, cybersecurity, Fintech and various technology industries in Asia.</p>
@@ -658,12 +663,7 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
           <footer><b>Sales Director</b><span>GFT Technologies</span></footer>
         </article>
       </div>
-      <div class="qnav rv">
-        <button class="qbtn" id="qprev" type="button" aria-label="Previous recommendation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-        <button class="qbtn" id="qnext" type="button" aria-label="Next recommendation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-        <span class="qbar" aria-hidden="true"><i id="qbar"></i></span>
-        <span class="qcount" id="qcount">01 / 07</span>
-      </div>
+      <div class="qdots rv" id="qdots" aria-label="Recommendation navigation"></div>
     </div>
   </section>
 
@@ -701,7 +701,7 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
 </main>
 
 <footer class="site">
-  <span>© 2026 Wyatt Yeung</span>
+  <span>&copy;&nbsp;2026 Wyatt Yeung</span>
   <span>Hong Kong · 22.3193° N, 114.1694° E</span>
 </footer>
 
@@ -887,39 +887,55 @@ if (!reduced) {
 /* ---------- candidate feedback carousel ---------- */
 {
   const slides = [...document.querySelectorAll('#qslider .quote')];
-  const qcount = document.getElementById('qcount'), qbar = document.getElementById('qbar');
+  const slider = document.getElementById('qslider');
+  const dotsWrap = document.getElementById('qdots');
   const HOLD = 8000;
   let qi = 0, qtimer = null;
-  const pad = n => String(n + 1).padStart(2, '0');
+  const fill = document.createElement('b');           // one progress fill, lives in the active dot
+  const dots = slides.map((_, j) => {
+    const d = document.createElement('button');
+    d.className = 'qdot'; d.type = 'button';
+    d.setAttribute('aria-label', `Go to recommendation ${j + 1} of ${slides.length}`);
+    d.appendChild(document.createElement('i'));
+    d.addEventListener('click', () => {
+      if (j === qi) return;
+      slider.classList.toggle('rev', j < qi);
+      qstop(); qshow(j); qplay();
+    });
+    dotsWrap.appendChild(d);
+    return d;
+  });
   function qshow(n){
     qi = (n + slides.length) % slides.length;
     slides.forEach((s, j) => { s.classList.toggle('active', j === qi); s.setAttribute('aria-hidden', j !== qi); });
-    qcount.textContent = `${pad(qi)} / ${pad(slides.length - 1)}`;
+    dots.forEach((d, j) => {
+      d.classList.toggle('on', j === qi);
+      if (j === qi) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+    });
+    dots[qi].firstChild.appendChild(fill);
+    dotsWrap.style.setProperty('--qd', getComputedStyle(slides[qi]).getPropertyValue('--qa'));
   }
-  function qbarRun(){                           // hold progress bar, from empty
-    qbar.style.transition = 'none'; qbar.style.transform = 'scaleX(0)';
-    void qbar.offsetWidth;
-    qbar.style.transition = `transform ${HOLD}ms linear`; qbar.style.transform = 'scaleX(1)';
+  function fillRun(){                                 // hold progress inside the active dot
+    fill.style.transition = 'none'; fill.style.transform = 'scaleX(0)';
+    void fill.offsetWidth;
+    fill.style.transition = `transform ${HOLD}ms linear`; fill.style.transform = 'scaleX(1)';
   }
   function qplay(){
     if (reduced || qtimer) return;
-    qtimer = setInterval(() => { qshow(qi + 1); qbarRun(); }, HOLD);
-    qbarRun();
+    qtimer = setInterval(() => { slider.classList.remove('rev'); qshow(qi + 1); fillRun(); }, HOLD);
+    fillRun();
   }
   function qstop(){
     clearInterval(qtimer); qtimer = null;
-    const m = getComputedStyle(qbar).transform;  // freeze the bar where it is
-    qbar.style.transition = 'none'; qbar.style.transform = m === 'none' ? 'scaleX(0)' : m;
+    const m = getComputedStyle(fill).transform;        // freeze the fill where it is
+    fill.style.transition = 'none'; fill.style.transform = m === 'none' ? 'scaleX(0)' : m;
   }
-  const slider = document.getElementById('qslider');
   function qgo(delta){
-    slider.classList.toggle('rev', delta < 0);   // slides enter from the travel direction
+    slider.classList.toggle('rev', delta < 0);
     qstop(); qshow(qi + delta); qplay();
   }
-  document.getElementById('qprev').addEventListener('click', () => qgo(-1));
-  document.getElementById('qnext').addEventListener('click', () => qgo(1));
 
-  /* drag / swipe */
+  /* drag / swipe — the primary gesture */
   let dragX = null, dragging = false;
   slider.addEventListener('pointerdown', e => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;

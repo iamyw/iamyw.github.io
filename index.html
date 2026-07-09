@@ -120,7 +120,6 @@ html.light .theme-btn .i-moon{display:block}
   color:var(--faint);text-transform:uppercase;
 }
 .hud-meta.coords{top:104px;right:4vw}
-.hud-meta.est{bottom:44px;left:4vw}
 .hero-head{
   margin-top:30px;font-weight:500;letter-spacing:.02em;
   font-size:clamp(1.15rem,2.2vw,1.55rem);color:var(--text);
@@ -193,7 +192,7 @@ h1 .row span{transform:translateY(110%)}
 .d4{animation-delay:.55s!important}.d5{animation-delay:.72s!important}.d6{animation-delay:1s!important}
 
 /* ============ SECTIONS COMMON ============ */
-section{padding:130px 6vw}
+section{padding:88px 6vw}
 .wrap{max-width:var(--maxw);margin:0 auto}
 .sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:64px;flex-wrap:wrap}
 h2{
@@ -216,11 +215,11 @@ h2{
 .lede{max-width:680px;font-size:clamp(1.05rem,1.6vw,1.3rem);color:var(--muted);margin-bottom:70px}
 .lede strong{color:var(--text);font-weight:500}
 .profile-opener{
-  max-width:760px;font-size:clamp(1.35rem,2.6vw,2rem);line-height:1.4;
-  color:var(--text);font-weight:400;margin-bottom:54px;
+  max-width:780px;font-size:clamp(1.35rem,2.6vw,2rem);line-height:1.4;
+  color:var(--text);font-weight:400;margin:0 auto 54px;
 }
 .profile-opener em{font-style:normal;color:var(--accent)}
-.profile-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1020px}
+.profile-body{display:flex;flex-direction:column;gap:26px;max-width:780px;margin:0 auto}
 .profile-body p{color:var(--muted);font-size:.98rem;line-height:1.85}
 .domains{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}
 .domain{
@@ -288,7 +287,31 @@ h2{
 }
 
 /* ============ FEEDBACK (spotlight carousel) ============ */
-.qslider{display:grid;max-width:860px;touch-action:pan-y}
+.qslider{display:grid;max-width:860px;margin:0 auto;position:relative;touch-action:pan-y}
+.qarrow{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  width:44px;height:44px;border-radius:50%;cursor:pointer;
+  background:rgba(7,7,7,.55);border:1px solid var(--glass-edge);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  color:var(--muted);display:flex;align-items:center;justify-content:center;
+  transition:color .25s,border-color .25s,background .25s;
+}
+.qarrow:hover{color:var(--accent);border-color:var(--glass-edge-hot)}
+.qarrow svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.qarrow.prev{left:-64px}
+.qarrow.next{right:-64px}
+@media (max-width:1100px){
+  .qarrow{width:38px;height:38px;background:rgba(7,7,7,.45)}
+  .qarrow.prev{left:8px}
+  .qarrow.next{right:8px}
+}
+html.light .qarrow{background:rgba(255,255,255,.65)}
+html.light .qarrow:hover{background:rgba(255,255,255,.85)}
+.qhint{display:none;font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint);text-align:center;margin-top:12px}
+@media (max-width:760px){
+  .qarrow{display:none}
+  .qhint{display:block}
+}
 .qslider.dragging{user-select:none;-webkit-user-select:none}
 .qslider.rev .quote{transform:translateX(-28px)}
 .qslider.rev .quote.active{transform:none}
@@ -316,20 +339,20 @@ h2{
 .quote:nth-of-type(9){--qa:251,113,133}  /* coral */
 .quote.active{opacity:1;transform:none;pointer-events:auto}
 .quote .mark{font-family:var(--display);font-size:2.8rem;line-height:.6;color:rgb(var(--qa));display:block;margin-bottom:24px}
-.quote p{font-size:clamp(1rem,1.5vw,1.13rem);color:var(--muted);line-height:1.9;margin-bottom:28px;flex:1;max-width:64ch}
+.quote p{font-size:clamp(1.08rem,1.7vw,1.25rem);color:var(--text);line-height:1.85;margin-bottom:28px;flex:1;max-width:64ch}
 .quote footer{display:flex;flex-direction:column;gap:5px;border-top:1px solid rgba(var(--qa),.18);padding-top:18px}
 .quote footer b{
   font-family:var(--body);font-weight:600;font-size:clamp(1rem,1.6vw,1.15rem);
   color:var(--text);letter-spacing:.05em;text-transform:uppercase;
 }
-.quote footer span{font-family:var(--mono);font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgb(var(--qa))}
+.quote footer span{font-family:var(--mono);font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:rgb(var(--qa))}
 html.light .quote{
   background:linear-gradient(150deg, rgba(255,255,255,.82), rgba(var(--qa),.09) 70%);
   border-color:rgba(var(--qa),.45);
   box-shadow:0 24px 70px rgba(20,60,90,.14), 0 0 55px rgba(var(--qa),.10), inset 0 1px 0 rgba(255,255,255,.9);
 }
 html.light .quote .mark,html.light .quote footer span{filter:brightness(.62) saturate(1.25)}
-.qdots{display:flex;align-items:center;flex-wrap:wrap;gap:2px;margin-top:24px}
+.qdots{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:2px;margin-top:24px}
 .qdot{
   width:32px;height:32px;padding:0;background:none;border:0;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
@@ -458,7 +481,7 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
   header.site nav a{font-size:10px;letter-spacing:.12em}
   .hud-meta.coords{display:none}
   .hero{justify-content:flex-start;padding-top:150px}
-  section{padding:90px 6vw}
+  section{padding:64px 6vw}
   .fly-card{padding:32px 26px 28px}
   .fly-hud{right:auto;left:6vw;top:auto;bottom:30px;transform:none;flex-direction:row;align-items:center;gap:14px}
   .fly-rail{display:none}
@@ -493,7 +516,6 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
   <!-- ================= HERO ================= -->
   <section class="hero" aria-label="Introduction">
     <p class="hud-meta coords boot d5">22.3193° N, 114.1694° E · Hong Kong</p>
-    <p class="hud-meta est boot d5">In search since 2019</p>
 
     <h1 aria-label="Wyatt Yeung">
       <span class="row"><span class="d1">WYATT</span></span>
@@ -662,8 +684,11 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
           <p>Wyatt&rsquo;s meticulous approach to understanding clients&rsquo; needs and expectations helps him prepare candidates throughout the interview process. Transparent, honest and personal &mdash; key attributes that make Wyatt such an exemplary talent acquisition partner who helps companies succeed during their growth journey.</p>
           <footer><b>Sales Director</b><span>GFT Technologies</span></footer>
         </article>
+        <button class="qarrow prev" id="qprev" type="button" aria-label="Previous recommendation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="qarrow next" id="qnext" type="button" aria-label="Next recommendation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
       <div class="qdots rv" id="qdots" aria-label="Recommendation navigation"></div>
+      <p class="qhint" aria-hidden="true">&lsaquo; swipe to browse &rsaquo;</p>
     </div>
   </section>
 
@@ -934,6 +959,8 @@ if (!reduced) {
     slider.classList.toggle('rev', delta < 0);
     qstop(); qshow(qi + delta); qplay();
   }
+  document.getElementById('qprev').addEventListener('click', () => qgo(-1));
+  document.getElementById('qnext').addEventListener('click', () => qgo(1));
 
   /* drag / swipe — the primary gesture */
   let dragX = null, dragging = false;

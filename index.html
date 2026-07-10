@@ -115,11 +115,6 @@ html.light .theme-btn .i-moon{display:block}
   min-height:100svh;display:flex;flex-direction:column;justify-content:center;
   padding:120px 6vw 40px;position:relative;
 }
-.hud-meta{
-  position:absolute;font-family:var(--mono);font-size:11px;letter-spacing:.16em;
-  color:var(--faint);text-transform:uppercase;
-}
-.hud-meta.coords{top:104px;right:4vw}
 .hero-head{
   margin-top:30px;font-weight:500;letter-spacing:.02em;
   font-size:clamp(1.15rem,2.2vw,1.55rem);color:var(--text);
@@ -466,7 +461,6 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
   header.site{gap:16px;padding:10px 18px;max-width:92vw}
   header.site nav{gap:13px}
   header.site nav a{font-size:10px;letter-spacing:.12em}
-  .hud-meta.coords{display:none}
   .hero{justify-content:flex-start;padding-top:150px}
   section{padding:64px 6vw}
   .fly-card{padding:32px 26px 28px}
@@ -502,7 +496,6 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
 
   <!-- ================= HERO ================= -->
   <section class="hero" aria-label="Introduction">
-    <p class="hud-meta coords boot d5">22.3193° N, 114.1694° E · Hong Kong</p>
 
     <h1 aria-label="Wyatt Yeung">
       <span class="row"><span class="d1">WYATT</span></span>
@@ -689,22 +682,18 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
         <h2>The right person <em>changes everything.</em></h2>
         <p class="contact-sub">I am now fully focused on the intersection of Technology, Quant, and AI. If you are looking to scale your team&rsquo;s capabilities, or you are a specialist in the field navigating your next career move, I&rsquo;d love to explore how we can work together. Let&rsquo;s chat.</p>
         <div class="contact-grid rv-stagger">
-          <a class="c-item" href="mailto:yw.wyatt@gmail.com">
-            <span class="k">Email</span>
-            <span class="v">yw.wyatt@gmail.com</span>
-          </a>
           <a class="c-item" href="https://linkedin.com/in/wyatt-yeung" target="_blank" rel="noopener">
             <span class="k">LinkedIn</span>
             <span class="v">Connect with me</span>
+          </a>
+          <a class="c-item" href="mailto:yw.wyatt@gmail.com">
+            <span class="k">Email</span>
+            <span class="v">yw.wyatt@gmail.com</span>
           </a>
           <button class="c-item" id="wechat-btn" type="button">
             <span class="k">WeChat</span>
             <span class="v">xximyw <span class="hint" id="wechat-hint">[tap to copy]</span></span>
           </button>
-          <a class="c-item" href="https://iamyw.github.io" target="_blank" rel="noopener">
-            <span class="k">Website</span>
-            <span class="v">iamyw.github.io</span>
-          </a>
         </div>
       </div>
     </div>

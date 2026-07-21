@@ -51,6 +51,8 @@ body{
 ::selection{background:var(--accent);color:var(--abyss)}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+html.zh body{font-weight:400}
+html.zh:not(.light){--muted:#C8C2BA;--faint:#968F86}
 
 /* ============ ATMOSPHERE ============ */
 #net{position:fixed;inset:0;z-index:0;opacity:.9;pointer-events:none}
@@ -99,6 +101,11 @@ header.site nav a{
   color:var(--muted);text-decoration:none;transition:color .25s;cursor:pointer;
 }
 header.site nav a:hover{color:var(--accent)}
+.lang-btn{
+  background:none;border:0;cursor:pointer;font-family:var(--mono);font-size:14px;
+  color:var(--muted);padding:4px 0;margin-right:-8px;transition:color .25s;line-height:1;
+}
+.lang-btn:hover{color:var(--accent)}
 .theme-btn{
   background:none;border:0;cursor:pointer;color:var(--muted);
   display:flex;align-items:center;padding:5px;margin:-5px -4px -5px 0;border-radius:50%;
@@ -251,6 +258,7 @@ h2{
   display:flex;align-items:center;gap:12px;margin-bottom:18px;text-transform:uppercase;
 }
 .fly-card .yr::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(255,138,60,.4),transparent)}
+.fly-card h3.ttn{text-transform:none}
 .fly-card h3{font-family:var(--display);font-weight:500;font-size:clamp(1.3rem,2.8vw,1.85rem);text-transform:uppercase;letter-spacing:.05em;margin:6px 0 4px}
 .fly-card .role{font-weight:500;font-size:.95rem;color:var(--ice);letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px}
 .fly-card p{font-size:.95rem;color:var(--muted);line-height:1.75}
@@ -459,6 +467,7 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
 }
 @media (max-width: 760px){
   header.site{gap:16px;padding:10px 18px;max-width:92vw}
+  .brand{display:none}
   header.site nav{gap:13px}
   header.site nav a{font-size:10px;letter-spacing:.12em}
   .hero{justify-content:flex-start;padding-top:150px}
@@ -482,10 +491,11 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
 <header class="site">
   <a class="brand" href="#top">Wyatt Yeung</a>
   <nav>
-    <a href="#focus">Focus</a>
-    <a href="#feedback">Testimonials</a>
-    <a href="#contact">Contact</a>
+    <a href="#focus" data-t="navFocus">Focus</a>
+    <a href="#feedback" data-t="navTesti">Testimonials</a>
+    <a href="#contact" data-t="navContact">Contact</a>
   </nav>
+  <button class="lang-btn" id="lang-btn" type="button" aria-label="切換至中文">中</button>
   <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch to light mode">
     <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
     <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg>
@@ -501,17 +511,17 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
       <span class="row"><span class="d1">WYATT</span></span>
       <span class="row"><span class="g d2">YEUNG</span></span>
     </h1>
-    <p class="hero-head boot d3">Scaling <em>Fintech, Quant, and AI</em> teams</p>
+    <p class="hero-head boot d3" data-t="heroHead">Scaling <em>Fintech, Quant, and AI</em> teams</p>
     <p class="hero-tags boot d4">
-      <span>Financial Technology</span><i>·</i>
-      <span>Quantitative Finance</span><i>·</i>
-      <span>Artificial Intelligence</span>
+      <span data-t="tag1">Financial Technology</span><i>·</i>
+      <span data-t="tag2">Quantitative Finance</span><i>·</i>
+      <span data-t="tag3">Artificial Intelligence</span>
     </p>
-    <p class="hero-former boot d4">Former APAC Technology Sales Recruitment &amp; Rec2Rec Specialist</p>
+    <p class="hero-former boot d4" data-t="heroFormer">Former APAC Technology Sales Recruitment &amp; Rec2Rec Specialist</p>
     <div class="hero-cta boot d5">
-      <a class="btn btn-accent" href="#contact">Get in touch</a>
-      <a class="btn btn-ghost" href="#focus">My search focus</a>
-      <a class="btn btn-ghost" href="#feedback">Testimonials</a>
+      <a class="btn btn-accent" href="#contact" data-t="btnContact">Get in touch</a>
+      <a class="btn btn-ghost" href="#focus" data-t="btnFocus">My search focus</a>
+      <a class="btn btn-ghost" href="#feedback" data-t="btnTesti">Testimonials</a>
     </div>
   </section>
 
@@ -519,14 +529,14 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
   <section id="profile" aria-label="Profile">
     <div class="wrap">
       <div class="sec-head rv">
-        <h2>Profile</h2>
+        <h2 data-t="h2Profile">Profile</h2>
         <span class="sec-line"></span>
       </div>
-      <p class="profile-opener rv">I specialize in <em>the people behind the algorithms.</em></p>
+      <p class="profile-opener rv" data-t="profOpen">I specialize in <em>the people behind the algorithms.</em></p>
       <div class="profile-body rv-stagger">
-        <p>As a seasoned recruitment specialist based in Hong Kong, I partner with organizations to scale their Fintech, Quant, and AI teams. Whether it&rsquo;s sourcing mission-critical developers, cutting-edge AI innovators, or elite quantitative minds, I focus on finding the technical precision required to drive modern financial and technology growth.</p>
-        <p>My journey in recruitment has been defined by variety and scale. I&rsquo;ve spent the last seven years navigating the APAC talent market &mdash; from managing complex searches for high-end hedge funds and Fintech firms to launching a Rec2Rec agency as its first hire.</p>
-        <p>Through all of it, the way I work hasn&rsquo;t changed: straight answers, no spam, and a genuine interest in getting the fit right for both sides of the table. Recruitment done properly is a long game &mdash; the relationships I value most are the ones that outlast any single placement.</p>
+        <p data-t="profP1">As a seasoned recruitment specialist based in Hong Kong, I partner with organizations to scale their Fintech, Quant, and AI teams. Whether it&rsquo;s sourcing mission-critical developers, cutting-edge AI innovators, or elite quantitative minds, I focus on finding the technical precision required to drive modern financial and technology growth.</p>
+        <p data-t="profP2">My journey in recruitment has been defined by variety and scale. I&rsquo;ve spent the last seven years navigating the APAC talent market &mdash; from managing complex searches for high-end hedge funds and Fintech firms to launching a Rec2Rec agency as its first hire.</p>
+        <p data-t="profP3">Through all of it, the way I work hasn&rsquo;t changed: straight answers, no spam, and a genuine interest in getting the fit right for both sides of the table. Recruitment done properly is a long game &mdash; the relationships I value most are the ones that outlast any single placement.</p>
       </div>
     </div>
   </section>
@@ -535,29 +545,29 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
   <section id="focus" aria-label="Search focus">
     <div class="wrap">
       <div class="sec-head rv">
-        <h2>Search focus</h2>
+        <h2 data-t="h2Focus">Search focus</h2>
         <span class="sec-line"></span>
       </div>
       <div class="domains rv-stagger">
         <article class="domain">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 8l7-5 7 5M7 21V11m10 10V11"/></svg>
-          <h3>Financial Technology</h3>
-          <p>Front-office software engineering and various technology functions for top-tier hedge funds, investment banks, crypto and Fintech companies globally.</p>
+          <h3 data-t="d1h">Financial Technology</h3>
+          <p data-t="d1p">Front-office software engineering and various technology functions for top-tier hedge funds, investment banks, crypto and Fintech companies globally.</p>
         </article>
         <article class="domain">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-6 4 4 6-8 3 4"/><path d="M3 21h18"/></svg>
-          <h3>Quantitative Finance</h3>
-          <p>Quant researchers, quant developers and quant traders for hedge funds and quant funds across Asia-Pacific.</p>
+          <h3 data-t="d2h">Quantitative Finance</h3>
+          <p data-t="d2p">Quant researchers, quant developers and quant traders for hedge funds and quant funds across Asia-Pacific.</p>
         </article>
         <article class="domain">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 1 4 4c0 1.1-.45 2.1-1.17 2.83L12 12l-2.83-3.17A4 4 0 0 1 12 2Z"/><circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/><path d="M12 12v3m0 0-4.2 1.6M12 15l4.2 1.6"/></svg>
-          <h3>Artificial Intelligence</h3>
-          <p>Head of AI, AI enablement, AI engineers, research scientists and machine learning specialists &mdash; for companies across all industries, well beyond finance and tech.</p>
+          <h3 data-t="d3h">Artificial Intelligence</h3>
+          <p data-t="d3p">Head of AI, AI enablement, AI engineers, research scientists and machine learning specialists &mdash; for companies across all industries, well beyond finance and tech.</p>
         </article>
         <article class="domain">
           <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17.5" cy="9.5" r="2.4"/><path d="M15.5 15.4c2.6.2 4.4 1.7 5 4.6"/></svg>
-          <h3>Technology GTM</h3>
-          <p>Sales, business development, account management, client success and presales &mdash; across software, cloud, data, telecommunications, cybersecurity, system integrators, 3D printing and more.</p>
+          <h3 data-t="d4h">Technology GTM</h3>
+          <p data-t="d4p">Sales, business development, account management, client success and presales &mdash; across software, cloud, data, telecommunications, cybersecurity, system integrators, 3D printing and more.</p>
         </article>
       </div>
     </div>
@@ -568,36 +578,36 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
     <div class="fly-track" id="fly-track">
       <div class="fly-viewport">
         <div class="fly-head">
-          <h2>Experience</h2>
+          <h2 data-t="h2Exp">Experience</h2>
           <span class="sec-line"></span>
         </div>
 
         <article class="fly-card" data-i="0">
-          <p class="yr">2025&ndash;2026</p>
-          <h3>Nicoll Curtin</h3>
-          <p class="role">Principal Consultant</p>
-          <p>Contingent recruitment for AI, quant and technology roles — helping companies across all industries in Hong Kong, Singapore, Beijing and Shanghai find the right people, fast. A client base built entirely from scratch.</p>
+          <p class="yr">2026&ndash;Present</p>
+          <h3 class="ttn">ioTECH SOLUTIONS</h3>
+          <p class="role" data-t="ioRole">Principal Consultant</p>
+          <p data-t="ioP">360&deg; recruitment across the Fintech, Quant and AI space. Serving clients mainly in financial services &mdash; from buy-side firms such as hedge funds, quant funds and high-frequency trading firms, to investment banks, crypto companies and Fintech firms &mdash; across all types of roles.</p>
         </article>
 
         <article class="fly-card" data-i="1">
           <p class="yr">2024&ndash;2025</p>
           <h3>Dean James Rec2Rec</h3>
-          <p class="role">Associate Partner, Asia</p>
-          <p>Recruitment-to-recruitment across Asia-Pacific — connecting recruitment professionals with agency opportunities at every level, and helping boutique search firms and larger groups build their teams across Hong Kong, Singapore, Japan and Australia.</p>
+          <p class="role" data-t="djRole">Associate Partner, Asia</p>
+          <p data-t="djP">Recruitment-to-recruitment across Asia-Pacific — connecting recruitment professionals with agency opportunities at every level, and helping boutique search firms and larger groups build their teams across Hong Kong, Singapore, Japan and Australia.</p>
         </article>
 
         <article class="fly-card" data-i="2">
           <p class="yr">2021&ndash;2024</p>
           <h3>BAH Partners</h3>
-          <p class="role">Senior Consultant</p>
-          <p>Specialist headhunting for hedge funds, high-frequency trading firms, crypto companies and investment banks &mdash; covering quantitative research and development, front-office software engineering, and financial technology mandates.</p>
+          <p class="role" data-t="bahRole">Senior Consultant</p>
+          <p data-t="bahP">Specialist headhunting for hedge funds, high-frequency trading firms, crypto companies and investment banks &mdash; covering quantitative research and development, front-office software engineering, and financial technology mandates.</p>
         </article>
 
         <article class="fly-card" data-i="3">
           <p class="yr">2019&ndash;2021</p>
           <h3>Ambitious People Group</h3>
-          <p class="role">Principal Consultant</p>
-          <p>360° search for technology sales talent across Asia-Pacific — placing sales, business development, presales and account management professionals with software, cloud, data, cybersecurity, Fintech and various technology industries in Asia.</p>
+          <p class="role" data-t="apgRole">Principal Consultant</p>
+          <p data-t="apgP">360° search for technology sales talent across Asia-Pacific — placing sales, business development, presales and account management professionals with software, cloud, data, cybersecurity, Fintech and various technology industries in Asia.</p>
         </article>
 
         <div class="fly-hud" aria-hidden="true">
@@ -605,7 +615,7 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
           <p class="fly-count" id="fly-count">WP 01 / 04</p>
           <div class="fly-rail"><div class="fly-dot" id="fly-dot"></div></div>
         </div>
-        <p class="fly-hint" id="fly-hint">Keep scrolling — flying through</p>
+        <p class="fly-hint" id="fly-hint" data-t="flyHint">Keep scrolling — flying through</p>
       </div>
     </div>
   </section>
@@ -614,60 +624,60 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
   <section id="feedback" aria-label="Candidate feedback">
     <div class="wrap">
       <div class="sec-head rv">
-        <h2>What candidates say</h2>
+        <h2 data-t="h2Fb">What candidates say</h2>
         <span class="sec-line"></span>
       </div>
       <div class="qslider rv" id="qslider">
         <article class="quote">
           <span class="mark" aria-hidden="true">&ldquo;</span>
-          <p>One of Wyatt&rsquo;s standout qualities is his remarkable patience and understanding. He took the time to listen attentively to my unique situation, including my career goals, strengths, and aspirations. Throughout the interview process, Wyatt was by my side every step of the way. His expertise in the industry was evident as he provided invaluable guidance and support. His attention to detail and insightful advice undoubtedly helped me excel in my interviews and land the job I love.</p>
+          <p data-t="q1">One of Wyatt&rsquo;s standout qualities is his remarkable patience and understanding. He took the time to listen attentively to my unique situation, including my career goals, strengths, and aspirations. Throughout the interview process, Wyatt was by my side every step of the way. His expertise in the industry was evident as he provided invaluable guidance and support. His attention to detail and insightful advice undoubtedly helped me excel in my interviews and land the job I love.</p>
           <footer><b>Data Sourcing &amp; Strategy</b><span>Citadel Securities</span></footer>
         </article>
         <article class="quote">
           <span class="mark" aria-hidden="true">&ldquo;</span>
-          <p>Wyatt is a great technical recruiter who was able to help me secure a role very quickly. Throughout the interview process, he was very helpful in doing research and providing me with useful tips. He also followed up closely with the company I was interviewing at to get all the necessary details. As a result, the interview process was very smooth. Overall it was a great experience working with Wyatt, and I would definitely recommend him if you are looking for a new job in finance and technology.</p>
+          <p data-t="q2">Wyatt is a great technical recruiter who was able to help me secure a role very quickly. Throughout the interview process, he was very helpful in doing research and providing me with useful tips. He also followed up closely with the company I was interviewing at to get all the necessary details. As a result, the interview process was very smooth. Overall it was a great experience working with Wyatt, and I would definitely recommend him if you are looking for a new job in finance and technology.</p>
           <footer><b>RAD Developer</b><span>Millennium</span></footer>
         </article>
         <article class="quote">
           <span class="mark" aria-hidden="true">&ldquo;</span>
-          <p>Words cannot describe the amount of effort Wyatt put in to make my job search easy. He was very transparent about the role I applied for, and very proactive and meticulous about connecting the right candidate to the right company. He makes sure you get the offer you deserve. I highly recommend that talented folks reach out to Wyatt and get placed at the dream company of their career.</p>
+          <p data-t="q3">Words cannot describe the amount of effort Wyatt put in to make my job search easy. He was very transparent about the role I applied for, and very proactive and meticulous about connecting the right candidate to the right company. He makes sure you get the offer you deserve. I highly recommend that talented folks reach out to Wyatt and get placed at the dream company of their career.</p>
           <footer><b>Software Engineer</b><span>Credit Suisse</span></footer>
         </article>
         <article class="quote">
           <span class="mark" aria-hidden="true">&ldquo;</span>
-          <p>Wyatt is very helpful and always up to date with the job market, sharing the latest developments with his candidates. Before each interview he provides thorough preparation and tips, so you walk in with solid knowledge of the role, the company and the industry.</p>
+          <p data-t="q4">Wyatt is very helpful and always up to date with the job market, sharing the latest developments with his candidates. Before each interview he provides thorough preparation and tips, so you walk in with solid knowledge of the role, the company and the industry.</p>
           <footer><b>Senior Quantitative Analyst</b><span>Crypto.com</span></footer>
         </article>
         <article class="quote">
           <span class="mark" aria-hidden="true">&ldquo;</span>
-          <p>I happened to meet Wyatt for a job opening, and overall it was a very good experience throughout the process. He was so kind in helping to get all my questions answered promptly, and he is definitely one of the coolest recruiters I have ever met. I look forward to working with him again.</p>
+          <p data-t="q5">I happened to meet Wyatt for a job opening, and overall it was a very good experience throughout the process. He was so kind in helping to get all my questions answered promptly, and he is definitely one of the coolest recruiters I have ever met. I look forward to working with him again.</p>
           <footer><b>Senior QA Automation Manager</b><span>Hex Trust</span></footer>
         </article>
         <article class="quote">
           <span class="mark" aria-hidden="true">&ldquo;</span>
-          <p>Wyatt is the most passionate recruiter I have ever met. He was happy to spend time getting to know my strengths, my goals and my concerns to make the perfect match. He also helped a lot with interview preparation and every stage of negotiation, and reminded me of the important dates to make sure the transition was smooth. I really appreciate his efforts in getting me into my new job!</p>
+          <p data-t="q6">Wyatt is the most passionate recruiter I have ever met. He was happy to spend time getting to know my strengths, my goals and my concerns to make the perfect match. He also helped a lot with interview preparation and every stage of negotiation, and reminded me of the important dates to make sure the transition was smooth. I really appreciate his efforts in getting me into my new job!</p>
           <footer><b>Senior Sales Manager</b><span>YipitData</span></footer>
         </article>
         <article class="quote">
           <span class="mark" aria-hidden="true">&ldquo;</span>
-          <p>I crossed paths with Wyatt on LinkedIn during my job hunt. He was a very resourceful and patient recruiter, and the entire process &mdash; from initial screening to contract signing &mdash; was smooth and comfortable. He spent a lot of time understanding my needs while recommending opportunities that matched them, and he helped me through the interviews: he understands what each role requires and equipped me with the tools and insights to get through them. It has been a pleasure working with Wyatt, and I will definitely recommend him.</p>
+          <p data-t="q7">I crossed paths with Wyatt on LinkedIn during my job hunt. He was a very resourceful and patient recruiter, and the entire process &mdash; from initial screening to contract signing &mdash; was smooth and comfortable. He spent a lot of time understanding my needs while recommending opportunities that matched them, and he helped me through the interviews: he understands what each role requires and equipped me with the tools and insights to get through them. It has been a pleasure working with Wyatt, and I will definitely recommend him.</p>
           <footer><b>Business Strategy Manager</b><span>KPay</span></footer>
         </article>
         <article class="quote">
           <span class="mark" aria-hidden="true">&ldquo;</span>
-          <p>Wyatt is one of the best recruiters I have ever met. He is super responsible and did his best to find opportunities that truly suited me. I am so thankful for his help and coordination throughout the hiring process at my current company, and impressed by his commitment to going the extra step to help candidates succeed in their career moves. His expertise and experience make Wyatt undoubtedly the best choice of consultant for your next career advancement in the sales and technology sector.</p>
+          <p data-t="q8">Wyatt is one of the best recruiters I have ever met. He is super responsible and did his best to find opportunities that truly suited me. I am so thankful for his help and coordination throughout the hiring process at my current company, and impressed by his commitment to going the extra step to help candidates succeed in their career moves. His expertise and experience make Wyatt undoubtedly the best choice of consultant for your next career advancement in the sales and technology sector.</p>
           <footer><b>Sales Enablement Specialist</b><span>Datasite</span></footer>
         </article>
         <article class="quote">
           <span class="mark" aria-hidden="true">&ldquo;</span>
-          <p>Wyatt&rsquo;s meticulous approach to understanding clients&rsquo; needs and expectations helps him prepare candidates throughout the interview process. Transparent, honest and personal &mdash; key attributes that make Wyatt such an exemplary talent acquisition partner who helps companies succeed during their growth journey.</p>
+          <p data-t="q9">Wyatt&rsquo;s meticulous approach to understanding clients&rsquo; needs and expectations helps him prepare candidates throughout the interview process. Transparent, honest and personal &mdash; key attributes that make Wyatt such an exemplary talent acquisition partner who helps companies succeed during their growth journey.</p>
           <footer><b>Sales Director</b><span>GFT Technologies</span></footer>
         </article>
         <button class="qarrow prev" id="qprev" type="button" aria-label="Previous recommendation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
         <button class="qarrow next" id="qnext" type="button" aria-label="Next recommendation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
       <div class="qdots rv" id="qdots" aria-label="Recommendation navigation"></div>
-      <p class="qhint" aria-hidden="true">&lsaquo; swipe to browse &rsaquo;</p>
+      <p class="qhint" aria-hidden="true" data-t="qhint">&lsaquo; swipe to browse &rsaquo;</p>
     </div>
   </section>
 
@@ -675,24 +685,24 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
   <section id="contact" aria-label="Contact">
     <div class="wrap">
       <div class="sec-head rv">
-        <h2>Signal me</h2>
+        <h2 data-t="h2Signal">Signal me</h2>
         <span class="sec-line"></span>
       </div>
       <div class="contact-panel rv">
-        <h2>The right person <em>changes everything.</em></h2>
-        <p class="contact-sub">I am now fully focused on the intersection of Technology, Quant, and AI. If you are looking to scale your team&rsquo;s capabilities, or you are a specialist in the field navigating your next career move, I&rsquo;d love to explore how we can work together. Let&rsquo;s chat.</p>
+        <h2 data-t="contactH2">The right person <em>changes everything.</em></h2>
+        <p class="contact-sub" data-t="contactSub">I am now fully focused on the intersection of Technology, Quant, and AI. If you are looking to scale your team&rsquo;s capabilities, or you are a specialist in the field navigating your next career move, I&rsquo;d love to explore how we can work together. Let&rsquo;s chat.</p>
         <div class="contact-grid rv-stagger">
           <a class="c-item" href="https://linkedin.com/in/wyatt-yeung" target="_blank" rel="noopener">
             <span class="k">LinkedIn</span>
-            <span class="v">Connect with me</span>
+            <span class="v" data-t="liV">Connect with me</span>
           </a>
-          <a class="c-item" href="mailto:yw.wyatt@gmail.com">
+          <a class="c-item" href="mailto:wyatt.yeung@io-techsolutions.com">
             <span class="k">Email</span>
-            <span class="v">yw.wyatt@gmail.com</span>
+            <span class="v">wyatt.yeung@io-techsolutions.com <span class="hint" id="email-hint" data-t="emHint">[tap to copy]</span></span>
           </a>
           <button class="c-item" id="wechat-btn" type="button">
             <span class="k">WeChat</span>
-            <span class="v">xximyw <span class="hint" id="wechat-hint">[tap to copy]</span></span>
+            <span class="v">xximyw <span class="hint" id="wechat-hint" data-t="wcHintT">[tap to copy]</span></span>
           </button>
         </div>
       </div>
@@ -702,7 +712,7 @@ html:not(.js) .fly-head{position:static;padding:0 0 40px}
 
 <footer class="site">
   <span>&copy;&nbsp;2026 Wyatt Yeung</span>
-  <span>Hong Kong</span>
+  <span data-t="footHK">Hong Kong</span>
 </footer>
 
 <script>
@@ -870,7 +880,7 @@ if (!reduced) {
       if (pe !== card._pe){ card.style.pointerEvents = pe; card._pe = pe; }
       card.classList.toggle('hot', Math.abs(d) < .5);
     });
-    const YEARS = [2026, 2025, 2024, 2021, 2019];   // newest → earliest
+    const YEARS = [2026, 2024, 2021, 2019, 2019];   // waypoint start years, newest → earliest
     const ty = clamp(t, 0, N - 1 + TAIL), lo = Math.min(Math.floor(ty), N - 1);
     const frac = lo === N - 1 ? Math.min(1, (ty - lo) / TAIL) : ty - lo;
     yearEl.textContent = Math.round(YEARS[lo] + (YEARS[lo+1] - YEARS[lo]) * frac);
@@ -985,12 +995,83 @@ themeBtn.addEventListener('click', () => {
 });
 syncThemeUI();
 
-/* ---------- WeChat copy ---------- */
+/* ---------- language toggle (EN / 繁中) ---------- */
+const ZH = {
+  navFocus:'專注領域', navTesti:'候選人評價', navContact:'聯絡',
+  heroHead:'為各類公司組建<em>金融科技、量化及人工智能</em>團隊',
+  heroFormer:'前亞太區科技銷售招聘及 Rec2Rec 專家',
+  btnContact:'聯絡我', btnFocus:'我的專注領域', btnTesti:'候選人評價',
+  h2Profile:'個人簡介',
+  profOpen:'我專注於<em>演算法背後的人才。</em>',
+  profP1:'作為駐香港的資深招聘顧問，我與不同類型的公司緊密合作：由初創以至頂級買方機構，協助他們組建及擴展金融科技、量化及人工智能團隊。無論是尋找肩負關鍵任務的開發人才、走在前沿的人工智能專才，還是頂尖的量化人才，我都致力為客戶配對最合適的技術人選，為現代金融及科技業務的增長出一分力。',
+  profP2:'我的招聘生涯以廣度與規模見稱。過去七年，我一直深耕亞太人才市場：由為頂級對沖基金及金融科技公司操刀複雜的招聘項目，到以第一位員工的身份，由零開始參與創立一家 Rec2Rec 獵頭公司，累積了廣泛而多元的經驗。',
+  profP3:'一路走來，我的工作方式始終如一：直接坦誠，只分享真正有用的資訊，只推薦真正合適的人選，用心為客戶和求職者雙方促成理想的配對。招聘講求長遠，我最重視的，從來都是那些超越單一職位配對的長久關係。',
+  h2Focus:'專注領域',
+  d1h:'金融科技', d1p:'為全球頂級對沖基金、投資銀行、加密貨幣及金融科技公司，招聘前台軟件工程師及各類技術職位。',
+  d2h:'量化金融', d2p:'為亞太區對沖基金及量化基金，招聘量化研究員、量化開發員及量化交易員。',
+  d3h:'人工智能', d3p:'人工智能主管、人工智能應用專才、人工智能工程師、研究科學家及機器學習專才，服務各行各業，不限於金融與科技。',
+  d4h:'科技銷售及市場拓展', d4p:'銷售、業務發展、客戶管理、客戶成功及售前，涵蓋軟件、雲端、數據、電訊、網絡安全、系統集成商、3D 打印等行業。',
+  h2Exp:'工作經歷',
+  ioP:'專注金融科技、量化及人工智能領域的全流程招聘（360°）。客戶以金融服務業為主，由對沖基金、量化基金、高頻交易公司等買方機構，到投資銀行、加密貨幣及金融科技公司，涵蓋各類職位。',
+  djP:'亞太區 Rec2Rec 獵頭招聘，為各級招聘人才對接獵頭公司機會，並協助中小型獵頭公司及大型招聘集團在香港、新加坡、日本及澳洲擴充團隊。',
+  bahP:'專注獵頭服務，客戶包括對沖基金、高頻交易公司、加密貨幣公司及投資銀行，涵蓋量化研究與開發、前台軟件工程及金融科技職位。',
+  apgP:'專注亞太區科技銷售人才的全流程招聘，為軟件、雲端、數據、網絡安全、金融科技等行業，安排銷售、業務發展、售前及客戶管理人才。',
+  flyHint:'繼續向下捲動瀏覽',
+  h2Fb:'候選人評價',
+  qhint:'‹ 左右滑動瀏覽 ›',
+  h2Signal:'聯絡我',
+  contactH2:'找對人，<em>事半功倍。</em>',
+  contactSub:'我現時專注於科技、Quant 與 AI 領域的招聘。無論你正打算擴充團隊，還是考慮個人事業的下一步，歡迎隨時聯絡，交流合作機會。',
+  liV:'與我聯絡',
+  emHint:'[點擊複製]', wcHintT:'[點擊複製]',
+  footHK:'香港',
+  q1:'Wyatt 其中一個最突出的特質，是他的耐心與細心。他花時間細心了解我的獨特情況，包括我的職業目標、強項與期望。整個面試過程中，Wyatt 一直從旁支援，他對行業的深入認識，為我提供了非常寶貴的意見和支持。他對細節的執著和精準的建議，無疑幫助我在面試中發揮出色，最終獲得了我熱愛的工作。',
+  q2:'Wyatt 是一位出色的技術招聘顧問，幫我在短時間內成功獲得新職位。整個面試過程中，他主動做足資料搜集，給我許多實用貼士，亦與面試公司緊密跟進，確保掌握所有細節，令整個流程非常順暢。與 Wyatt 合作是一次很好的經驗，如果你正在金融及科技行業尋找新機會，我一定會推薦他。',
+  q3:'Wyatt 為我的求職付出的努力，實在難以言喻。他對我申請的職位非常透明，亦十分主動細心，致力把合適的人選配對到合適的公司。他會確保你取得應得的 offer。我強烈推薦有才華的朋友聯絡 Wyatt，讓他幫你進入夢寐以求的公司。',
+  q4:'Wyatt 非常樂於助人，對就業市場的最新動態瞭如指掌，並會與候選人分享。每次面試前，他都會提供詳盡的準備和貼士，讓你對職位、公司以至行業都有充分了解。',
+  q5:'我因為一個職位空缺認識 Wyatt，整個過程都是非常好的體驗。他非常友善，總是迅速解答我所有問題，絕對是我遇過最好相處的招聘顧問之一。期待日後再有機會合作。',
+  q6:'Wyatt 是我遇過最有熱誠的招聘顧問。他樂意花時間了解我的強項、目標和顧慮，務求找到最合適的配對。他在面試準備和薪酬談判各個環節都幫了我很多，亦會提醒我重要日期，確保過渡順利。非常感謝他幫我成功轉職！',
+  q7:'我在求職期間於 LinkedIn 認識 Wyatt。他是一位非常有辦法又有耐性的招聘顧問，由最初的職位篩選到簽約，整個過程都順暢又安心。他花了很多時間了解我的需求，推薦切合我的工作機會，亦在面試中給我實用的工具和心得。與 Wyatt 合作十分愉快，我一定會推薦他。',
+  q8:'Wyatt 是我遇過最好的招聘顧問之一。他非常負責任，盡力為我尋找真正合適的機會。十分感謝他在我現職公司整個招聘過程中的協助和協調，他那種多行一步、助人成功轉職的投入令我印象深刻。憑他的專業和經驗，若你考慮在銷售及科技界更上一層樓，Wyatt 絕對是不二之選。',
+  q9:'Wyatt 以細緻的方式了解客戶的需要和期望，因此能在整個面試過程中為候選人做好準備。透明、誠實、有人情味，這些特質令 Wyatt 成為公司成長路上出色的招聘夥伴。'
+};
+const HINTS = {
+  en: { copy:'[tap to copy]', copied:'[copied]', id:'[ID: xximyw]' },
+  zh: { copy:'[點擊複製]',   copied:'[已複製]',  id:'[ID: xximyw]' }
+};
+const i18nEls = [...document.querySelectorAll('[data-t]')];
+const ENSRC = {};
+i18nEls.forEach(el => ENSRC[el.dataset.t] = el.innerHTML);
+let lang = 'en';
+try { lang = localStorage.getItem('wy-lang') === 'zh' ? 'zh' : 'en'; } catch(e) {}
+const langBtn = document.getElementById('lang-btn');
+function applyLang(){
+  const dict = lang === 'zh' ? ZH : ENSRC;
+  i18nEls.forEach(el => { const v = dict[el.dataset.t]; if (v != null) el.innerHTML = v; });
+  document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+  document.documentElement.classList.toggle('zh', lang === 'zh');
+  langBtn.textContent = lang === 'zh' ? 'EN' : '中';
+  langBtn.setAttribute('aria-label', lang === 'zh' ? 'Switch to English' : '切換至中文');
+}
+langBtn.addEventListener('click', () => {
+  lang = lang === 'zh' ? 'en' : 'zh';
+  try { localStorage.setItem('wy-lang', lang); } catch(e) {}
+  applyLang();
+});
+if (lang === 'zh') applyLang();
+
+/* ---------- WeChat + email copy ---------- */
 const wcBtn = document.getElementById('wechat-btn'), wcHint = document.getElementById('wechat-hint');
 wcBtn.addEventListener('click', async () => {
-  try { await navigator.clipboard.writeText('xximyw'); wcHint.textContent = '[copied]'; }
-  catch { wcHint.textContent = '[ID: xximyw]'; }
-  setTimeout(() => wcHint.textContent = '[tap to copy]', 2200);
+  try { await navigator.clipboard.writeText('xximyw'); wcHint.textContent = HINTS[lang].copied; }
+  catch { wcHint.textContent = HINTS[lang].id; }
+  setTimeout(() => wcHint.textContent = HINTS[lang].copy, 2200);
+});
+const emHint = document.getElementById('email-hint');
+emHint.addEventListener('click', async e => {
+  e.preventDefault(); e.stopPropagation();
+  try { await navigator.clipboard.writeText('wyatt.yeung@io-techsolutions.com'); emHint.textContent = HINTS[lang].copied; } catch(err) {}
+  setTimeout(() => emHint.textContent = HINTS[lang].copy, 2200);
 });
 </script>
 </body>
